@@ -14,7 +14,7 @@ data_clase_1_gather <-gather(data_clase_1,tipo_cama, value, Generales:`No.discri
 ## con spread las devolvemos a su estado original 
 data_clase_1_spread <-spread(data_clase_1_gather,tipo_cama,value)
 
-## con unique podemos ver los valores ˙nicos necesarios para transformar el nombre 
+## con unique podemos ver los valores √∫nicos necesarios para transformar el nombre 
 ## de nuestras observaciones
 unique(data_clase_1_gather$tipo_cama) 
 
@@ -23,14 +23,14 @@ unique(data_clase_1_gather$tipo_cama)
 
 data_clase_1_gather <- data_clase_1_gather %>% mutate(tipo_cama = case_when(
   tipo_cama == "Generales" ~ 'Aislamiento y casos leves',
-  tipo_cama == "Pedi·tricas" ~ 'Aislamiento y casos leves',
+  tipo_cama == "Pedi√°tricas" ~ 'Aislamiento y casos leves',
   tipo_cama == "Maternidad" ~ 'Aislamiento y casos leves',
-  tipo_cama == "Htal.dÌa" ~ 'Aislamiento y casos leves',
+  tipo_cama == "Htal.d√≠a" ~ 'Aislamiento y casos leves',
   tipo_cama == "No.discriminadas" ~ 'Aislamiento y casos leves',
   tipo_cama == "C.Especiales" ~ 'Casos graves',
   tipo_cama == "UTI.adultos" ~ 'Casos graves',
-  tipo_cama == "UTI.pedi·tricas" ~ 'Casos graves',
-  tipo_cama == "NeonatologÌa" ~ 'Casos graves Neo',
+  tipo_cama == "UTI.pedi√°tricas" ~ 'Casos graves',
+  tipo_cama == "Neonatolog√≠a" ~ 'Casos graves Neo',
   tipo_cama == "Int..Prolong." ~ 'Casos graves'))
 
 ## transformamos las observaciones/filas de nuestra columna "value" para que sean numericos 
@@ -54,7 +54,7 @@ data_clase1 <- data_clase_1_groupby %>%
 ## traigamos nuestro dataset clase 2
 data_clase_2<- read.csv("https://raw.githubusercontent.com/labpoliticasuba/Clases_2020/master/Clase%2003/data_clase_2.csv", encoding = "Latin-1")
 
-## realicemos un join para poder unir las tablas gracias a la columna distrito (que es la que tienen en com˙n)!
+## realicemos un join para poder unir las tablas gracias a la columna distrito (que es la que tienen en com√∫n)!
 data_clase <- left_join(data_clase1, data_clase_2, by =  "DISTRITO")
 head(data_clase)
 
