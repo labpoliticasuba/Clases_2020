@@ -7,14 +7,14 @@ library(viridis)
 ## Descargamos la base de eph
 base_eph <- get_microdata(year = 2019,   # especifco el año
                           trimester = 4,     # el trimestre
-                          vars = c('all'))
+                          vars = c('all')) # le pido todas las variables
 
-#seleccionamos y nos quedamos con las columnas que nos sirven
+#seleccionamos y nos quedamos con las columnas que nos sirven de la región de GBA y para encuestados mayores de 18
 base_eph <- base_eph %>% select(CODUSU, AGLOMERADO, ANO4, TRIMESTRE, NRO_HOGAR, REGION, PONDERA, 
                                 CH04, CH06, CH09, NIVEL_ED, P21, P47T, ITF, IPCF) %>% 
   filter(REGION == 1 & CH06 >= 18)
 
-# renombramos las columnas para que nos queden más legibles
+# renombramos las columnas para que nos queden más entendibles
 base_eph <- base_eph %>% rename(
   cod_distintivo_viviendas = CODUSU, 
   ano = ANO4,
